@@ -1,234 +1,40 @@
-/* ===================================================
-   ROOT VARIABLES
-   Digunakan untuk menyimpan warna agar mudah diganti-ganti
-   =================================================== */
-:root {
-  --pink-primary: #ffc1cc;    /* Warna pink utama */
-  --pink-hover: #ff9aa2;      /* Warna pink sedikit gelap untuk hover */
-  --pink-soft: #fff0f3;       /* Warna pink sangat muda untuk background */
-  --white: #ffffff;           /* Warna putih bersih */
-  --text-dark: #4a4a4a;       /* Warna teks utama */
-  --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Bayangan lembut */
-}
+<header>
+  <nav>
+    <div class="logo">kelompok<span>Tiga</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#kelompok">Kelompok</a></li>
+      <li><a href="#laporan">Laporan</a></li>
+      <li><a href="#video">Video</a></li>
+    </ul>
+  </nav>
+</header>
 
-/* ===================================================
-   BASE STYLES (DASAR)
-   =================================================== */
-* {
-  margin: 0;                  /* Menghapus margin bawaan browser */
-  padding: 0;                 /* Menghapus padding bawaan browser */
-  box-sizing: border-box;     /* Ukuran elemen tetap konsisten meskipun ada padding */
-}
+<section id="home" class="hero-kelompok">
+  <div class="sunflower sf-home-1">🌻</div>
+  <div class="sunflower sf-home-2">🌻</div>
+  <div class="star-magic star-1">✨</div>
+  <div class="star-magic star-2">🌟</div>
 
-body {
-  font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins sesuai link Google Font kamu */
-  color: var(--text-dark);            /* Warna teks default */
-  line-height: 1.6;                   /* Jarak antar baris teks agar nyaman dibaca */
-  scroll-behavior: smooth;            /* Membuat scroll halus saat klik link menu */
-  background-color: var(--white);
-}
+  <div class="hero-overlay">
+    <p>Welcome to Our Website</p>
+    <h1>Kelompok 3</h1>
+    <p>Selamat datang di website kelompok kami</p>
+    <br />
+    <div class="hero-buttons">
+      <a href="#kelompok" class="btn-cek">Cek Anggota</a>
+    </div>
+  </div>
+</section>
 
-/* ===================================================
-   NAVIGASI (HEADER)
-   =================================================== */
-header {
-  background-color: var(--white);
-  padding: 1rem 5%;           /* Jarak atas-bawah dan kanan-kiri */
-  position: fixed;            /* Membuat navigasi tetap di atas saat di-scroll */
-  width: 100%;                /* Lebar memenuhi layar */
-  top: 0;
-  z-index: 1000;              /* Memastikan navigasi berada di lapisan paling atas */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+<section id="kelompok" class="section-container bg-light">
+  <div class="sunflower-mini sf-about-1">🌻</div>
+  <div class="sunflower-mini sf-about-2">🌻</div>
+  <div class="star-magic star-mini">✨</div>
 
-nav {
-  display: flex;              /* Menggunakan Flexbox untuk tata letak */
-  justify-content: space-between; /* Logo di kiri, Menu di kanan */
-  align-items: center;        /* Vertikal ke tengah */
-  max-width: 1200px;
-  margin: 0 auto;             /* Memposisikan kontainer navigasi di tengah */
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--pink-primary);
-}
-
-.logo span {
-  color: var(--text-dark);    /* Bagian kata "Tiga" berwarna gelap */
-}
-
-.nav-links {
-  display: flex;              /* Menu berjejer secara horizontal */
-  list-style: none;           /* Menghilangkan tanda bullet titik */
-}
-
-.nav-links li {
-  margin-left: 2rem;          /* Jarak antar menu */
-}
-
-.nav-links a {
-  text-decoration: none;      /* Menghilangkan garis bawah link */
-  color: var(--text-dark);
-  font-weight: 400;
-  transition: color 0.3s;     /* Efek halus saat warna berubah */
-}
-
-.nav-links a:hover {
-  color: var(--pink-primary); /* Warna berubah pink saat kursor menempel */
-}
-
-/* ===================================================
-   HERO SECTION (BERANDA)
-   =================================================== */
-.hero-kelompok {
-  height: 100vh;              /* Tinggi penuh satu layar monitor */
-  background: linear-gradient(rgba(255, 193, 204, 0.2), rgba(255, 193, 204, 0.2)), 
-              url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=1500') center/cover;
-  display: flex;              /* Menggunakan Flexbox untuk memusatkan teks */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-top: 80px;          /* Kompensasi karena navbar fixed */
-}
-
-.hero-overlay h1 {
-  font-size: 4rem;            /* Ukuran font judul sangat besar */
-  color: var(--text-dark);
-  margin-bottom: 1rem;
-}
-
-.hero-overlay p {
-  font-size: 1.2rem;
-  color: #777;
-}
-
-.btn-cek {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.8rem 2.5rem;
-  background-color: var(--pink-primary);
-  color: white;
-  text-decoration: none;
-  border-radius: 50px;        /* Membuat tombol berbentuk kapsul */
-  font-weight: 600;
-  transition: 0.3s transform, 0.3s background-color;
-}
-
-.btn-cek:hover {
-  background-color: var(--pink-hover);
-  transform: translateY(-5px); /* Efek melayang ke atas sedikit */
-}
-
-/* ===================================================
-   SECTION CONTAINER (UMUM)
-   =================================================== */
-.section-container {
-  padding: 100px 5%;          /* Jarak antar bagian website */
-  max-width: 1200px;
-  margin: 0 auto;             /* Berada di tengah halaman */
-}
-
-.bg-light { background-color: var(--pink-soft); } /* Warna selang-seling */
-.bg-white { background-color: var(--white); }
-
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: var(--text-dark);
-}
-
-/* ===================================================
-   ANGGOTA KELOMPOK (GRID SYSTEM)
-   =================================================== */
-.kelompok-grid {
-  display: grid;              /* Menggunakan sistem Grid */
-  /* Membuat kolom otomatis sejajar (laptop 3 kolom, tablet 2, hp 1) */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;                /* Jarak antar kartu */
-}
-
-.kelompok-card {
-  background: var(--white);
-  border-radius: 20px;        /* Sudut tumpul yang modern */
-  overflow: hidden;           /* Memastikan gambar mengikuti bentuk kartu */
-  box-shadow: var(--shadow);
-  text-decoration: none;      /* Karena <a> membungkus kartu */
-  color: inherit;
-  transition: 0.4s;           /* Animasi transisi */
-  border: 1px solid rgba(255, 193, 204, 0.3);
-}
-
-.kelompok-card:hover {
-  transform: scale(1.05);     /* Kartu membesar sedikit saat di-hover */
-}
-
-.card-img img {
-  width: 100%;                /* Gambar menyesuaikan lebar kartu */
-  height: 350px;              /* Tinggi foto seragam */
-  object-fit: cover;          /* Foto tidak penyok, dipotong otomatis sesuai frame */
-}
-
-.card-info {
-  padding: 2rem;
-  text-align: center;
-}
-
-.card-info h3 {
-  margin-bottom: 0.5rem;
-  color: var(--text-dark);
-}
-
-.card-info p {
-  color: var(--pink-primary);
-  font-weight: 600;
-}
-
-/* ===================================================
-   MAKALAH & VIDEO (KONTEN)
-   =================================================== */
-.content-wrapper, .video-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.pdf-container, .video-container {
-  width: 100%;
-  height: 500px;              /* Tinggi area tampilan PDF dan Video */
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  background: #eee;
-}
-
-.content-desc, .video-desc {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-/* ===================================================
-   FOOTER
-   =================================================== */
-footer {
-  background-color: var(--pink-primary);
-  color: white;
-  padding: 3rem 5%;
-  text-align: center;
-}
-
-/* ===================================================
-   RESPONSIVE (TAMPILAN HP)
-   =================================================== */
-@media (max-width: 768px) {
-  .hero-overlay h1 {
-    font-size: 2.5rem;        /* Judul mengecil di layar HP */
-  }
-  .nav-links {
-    display: none;            /* Menyederhanakan navbar untuk HP (bisa ditambah tombol menu nanti) */
-  }
-  .pdf-container, .video-container {
-    height: 300px;            /* Tinggi menyesuaikan layar kecil */
-  }
-}
+  <div class="container">
+    <h2 class="section-title">Anggota Kelompok</h2>
+    <div class="kelompok-grid">
+        </div>
+  </div>
+</section>
