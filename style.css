@@ -1,4 +1,4 @@
-/* --- 1. DASAR & FONT --- */
+/* --- RESET & DASAR --- */
 * {
     margin: 0;
     padding: 0;
@@ -16,10 +16,10 @@ body {
     overflow-x: hidden;
 }
 
-/* --- 2. NAVBAR --- */
+/* --- NAVIGASI --- */
 header {
     background: #fff;
-    padding: 15px 8%;
+    padding: 15px 10%;
     position: fixed;
     width: 100%;
     top: 0;
@@ -34,13 +34,13 @@ nav {
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
-    color: #333;
+    text-transform: capitalize;
 }
 
 .logo span {
-    color: #ffcc00; /* Kuning Matahari */
+    color: #ffcc00; /* Kuning Bunga Matahari */
 }
 
 .nav-links {
@@ -49,13 +49,12 @@ nav {
 }
 
 .nav-links li {
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 .nav-links li a {
     text-decoration: none;
-    color: #555;
-    font-weight: 400;
+    color: #333;
     transition: 0.3s;
 }
 
@@ -63,7 +62,7 @@ nav {
     color: #ffcc00;
 }
 
-/* --- 3. HERO KELOMPOK --- */
+/* --- HERO KELOMPOK --- */
 .hero-kelompok {
     height: 100vh;
     background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
@@ -72,22 +71,22 @@ nav {
     justify-content: center;
     text-align: center;
     position: relative;
-    padding-top: 80px;
+    overflow: hidden;
 }
 
 .hero-overlay h1 {
     font-size: 4rem;
-    color: #333;
     margin-bottom: 10px;
 }
 
 .hero-overlay p {
-    font-size: 1.2rem;
     color: #666;
+    font-size: 1.1rem;
 }
 
 .btn-cek {
     display: inline-block;
+    margin-top: 20px;
     padding: 12px 30px;
     background: #ffcc00;
     color: #333;
@@ -103,27 +102,26 @@ nav {
     transform: translateY(-3px);
 }
 
-/* --- 4. ANIMASI SUNFLOWER & STARS --- */
+/* --- ANIMASI BUNGA MATAHARI & BINTANG --- */
 .sunflower, .sunflower-mini, .star-magic {
     position: absolute;
-    font-size: 40px;
     z-index: 1;
     animation: float 4s infinite ease-in-out;
 }
 
-.sf-home-1 { top: 20%; left: 10%; }
-.sf-home-2 { bottom: 20%; right: 10%; animation-delay: 2s; }
+.sf-home-1 { top: 20%; left: 10%; font-size: 50px; }
+.sf-home-2 { bottom: 20%; right: 10%; font-size: 50px; animation-delay: 2s; }
 .star-1 { top: 15%; right: 15%; font-size: 30px; }
 .star-2 { bottom: 15%; left: 15%; font-size: 30px; animation-delay: 1s; }
 
 @keyframes float {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(20deg); }
+    50% { transform: translateY(-20px) rotate(15deg); }
 }
 
-/* --- 5. GRID ANGGOTA --- */
+/* --- SECTION CONTAINER --- */
 .section-container {
-    padding: 80px 10%;
+    padding: 100px 10%;
     position: relative;
 }
 
@@ -134,9 +132,9 @@ nav {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 50px;
-    position: relative;
 }
 
+/* --- GRID ANGGOTA --- */
 .kelompok-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -151,12 +149,12 @@ nav {
     color: inherit;
     transition: 0.3s;
     border: 1px solid #ffe680;
-    text-align: center;
+    display: block;
 }
 
 .kelompok-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(255, 204, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(255, 204, 0, 0.15);
 }
 
 .card-img img {
@@ -167,19 +165,20 @@ nav {
 
 .card-info {
     padding: 20px;
+    text-align: center;
 }
 
 .card-info h3 {
     font-size: 1.2rem;
-    margin-bottom: 5px;
+    color: #333;
 }
 
 .card-info p {
     color: #777;
-    font-size: 0.9rem;
+    margin-top: 5px;
 }
 
-/* --- 6. LAPORAN & VIDEO --- */
+/* --- LAPORAN & VIDEO --- */
 .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -189,13 +188,18 @@ nav {
 
 .pdf-container, .video-wrapper {
     width: 100%;
-    max-width: 800px;
-    border-radius: 15px;
+    max-width: 900px;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border: 5px solid #ffcc00;
 }
 
-/* --- 7. FOOTER --- */
+.content-desc {
+    text-align: center;
+}
+
+/* --- FOOTER --- */
 footer {
     padding: 40px;
     background: #333;
@@ -203,9 +207,9 @@ footer {
     text-align: center;
 }
 
-/* --- 8. RESPONSIVE --- */
+/* --- RESPONSIVE (HP) --- */
 @media (max-width: 768px) {
     .hero-overlay h1 { font-size: 2.5rem; }
-    .nav-links { display: none; } /* Sembunyikan menu di HP biar simple */
+    .nav-links { display: none; }
     .section-container { padding: 60px 5%; }
 }
