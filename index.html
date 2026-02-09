@@ -1,56 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web PSAJ - Kelompok 3</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" />
+    
+    <style>
+        /* --- Root Variables --- */
+        :root {
+            --pastel-yellow: #fdf0ad;
+            --soft-cream: #fffdf5;
+            --dark-brown: #5d4037;
+            --accent-orange: #d4a017;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- Base Setup --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--dark-brown);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--dark-brown);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* --- Hero Section --- */
+        .hero-kelompok {
+            height: 100vh;
+            background: linear-gradient(135deg, #fff9e3, var(--pastel-yellow));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            z-index: 20;
+            padding: 0 20px;
+        }
+
+        .hero-overlay h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .sub-title {
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .btn-cek {
+            display: inline-block;
+            padding: 12px 35px;
+            background: var(--white);
+            color: var(--accent-orange);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-cek:hover {
+            background: var(--accent-orange);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* --- Decorations --- */
+        .sunflower-big {
+            position: absolute;
+            font-size: 12rem;
+            z-index: 5;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .sf-1 { top: -5%; left: -5%; transform: rotate(-15deg); }
+        .sf-2 { bottom: -5%; right: -5%; transform: rotate(15deg); }
+
+        .hiasan {
+            position: absolute;
+            z-index: 10;
+            pointer-events: none;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .honey-1 { top: 20%; right: 10%; font-size: 4rem; }
+        .honey-2 { bottom: 20%; left: 10%; font-size: 4rem; animation-delay: 1s; }
+        .star-1 { top: 50%; right: 5%; font-size: 2.5rem; }
+
+        /* --- Sections General --- */
+        .section-container {
+            padding: 100px 0;
+        }
+
+        .bg-white { background: var(--white); }
+        .bg-pastel { background: var(--soft-cream); }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-orange);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        /* --- Member Grid --- */
+        .kelompok-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .kelompok-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .kelompok-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* --- Laporan (PDF Section) --- */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .pdf-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .btn-pdf {
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--dark-brown);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .btn-pdf:hover {
+            background: var(--accent-orange);
+        }
+
+        /* --- Video Section --- */
+        .video-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 5;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+            display: block;
+        }
+
+        .lebah {
+            position: absolute;
+            font-size: 3rem;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .lebah-1 { top: 10%; left: 5%; animation: fly 10s infinite linear; }
+        .lebah-2 { bottom: 10%; right: 5%; animation: fly 12s infinite linear reverse; }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fly {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(200px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: var(--pastel-yellow);
+            font-weight: 600;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-overlay h1 { font-size: 3rem; }
+            .sunflower-big { font-size: 7rem; }
+        }
+    </style>
+</head>
+<body>
+
 <header>
     <nav>
-        <div class="logo">Sunflower Team</div>
+        <div class="logo">kelompok<span>Tiga</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#anggota">Members</a></li>
-            <li><a href="#video">Gallery</a></li>
+            <li><a href="#kelompok">Kelompok</a></li>
+            <li><a href="#laporan">Laporan</a></li>
+            <li><a href="#video">Video</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <section class="hero-kelompok" id="home">
+    <section id="home" class="hero-kelompok">
         <div class="sunflower-big sf-1">🌻</div>
         <div class="sunflower-big sf-2">🌻</div>
-        
+
         <div class="hiasan honey-1">🍯</div>
         <div class="hiasan honey-2">🍯</div>
         <div class="hiasan star-1">✨</div>
 
         <div class="hero-overlay">
-            <p class="sub-title">WELCOME TO OUR SPACE</p>
-            <h1>Kelompok 05</h1>
-            <a href="#anggota" class="btn-cek">Meet the Team</a>
+            <p class="sub-title">Welcome to Our Website</p>
+            <h1>Kelompok 3</h1>
+            <p>Selamat datang di website kelompok kami</p>
+            <div class="hero-buttons">
+                <a href="#kelompok" class="btn-cek">Cek Anggota</a>
+            </div>
         </div>
     </section>
 
-    <section class="section-container bg-white" id="anggota">
-        <h2 class="section-title">Our Members</h2>
-        <div class="kelompok-grid">
-            <div class="kelompok-card">
-                <div class="card-img">
-                    <img src="https://via.placeholder.com/320x400" alt="Member Name">
-                </div>
-                <div class="card-info">
-                    <h3>Member Name</h3>
-                    <p>Creative Lead</p>
-                </div>
+    <section id="kelompok" class="section-container bg-white">
+        <div class="container">
+            <h2 class="section-title">Anggota Kelompok</h2>
+            <div class="kelompok-grid">
+                <a href="https://adhityaas.github.io/myporto1/" class="kelompok-card" target="_blank">
+                    <div class="card-img"><img src="Adhit.jpeg" alt="Adhit"></div>
+                    <div class="card-info"><h3>Adhitya Awaludin</h3><p>Absen: 01</p></div>
+                </a>
+                <a href="porto-anggota2.html" class="kelompok-card" target="_blank">
+                    <div class="card-img"><img src="Fino.jpeg" alt="Fino"></div>
+                    <div class="card-info"><h3>Fino Dwi Pratama</h3><p>Absen: 07</p></div>
+                </a>
+                <a href="https://jayakun27.github.io/Jay-Idzes/" class="kelompok-card" target="_blank">
+                    <div class="card-img"><img src="Jaya.jpeg" alt="Jaya"></div>
+                    <div class="card-info"><h3>Jaya Tri Yanto</h3><p>Absen: 12</p></div>
+                </a>
+                <a href="https://juliantitrim.github.io/myporto01/" class="kelompok-card" target="_blank">
+                    <div class="card-img"><img src="Juli.jpeg" alt="Juli"></div>
+                    <div class="card-info"><h3>Julianti Tri M.</h3><p>Absen: 13</p></div>
+                </a>
+                <a href="https://irina4p.github.io/irina04_" class="kelompok-card" target="_blank">
+                    <div class="card-img"><img src="Niken.jpeg" alt="Niken"></div>
+                    <div class="card-info"><h3>Niken Triwulandari</h3><p>Absen: 23</p></div>
+                </a>
+                <a href="https://zezzei.github.io/myporto/" class="kelompok-card" target="_blank">
+                    <div class="card-img"><img src="Zheina.jpeg" alt="Zheina"></div>
+                    <div class="card-info"><h3>Zheina Ajwa A.</h3><p>Absen: 29</p></div>
+                </a>
             </div>
-            </div>
+        </div>
     </section>
 
-    <section class="section-container bg-pastel" id="video">
+    <section id="laporan" class="section-container bg-pastel">
+        <div class="container">
+            <h2 class="section-title">Makalah Sejarah dan PKN</h2>
+            <div class="content-wrapper">
+                <div class="pdf-container">
+                    <iframe src="https://drive.google.com/drive/folders/1P3oD2BduwG80WdXsiWel2SD-frEDgms7" width="100%" height="500px"></iframe>
+                </div>
+                <div class="content-desc">
+                    <p>Informasi lebih mendalam ada pada dokumen di atas.</p>
+                    <a href="https://drive.google.com/drive/folders/1P3oD2BduwG80WdXsiWel2SD-frEDgms7" target="_blank" class="btn-pdf">Unduh PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video" class="section-container bg-white" style="position: relative; overflow: hidden;">
         <div class="lebah lebah-1">🐝</div>
         <div class="lebah lebah-2">🐝</div>
-        
-        <h2 class="section-title">Our Journey</h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Team Video"></iframe>
+        <div class="container">
+            <h2 class="section-title">Dokumentasi Video</h2>
+            <div class="video-wrapper">
+               <iframe src="https://www.youtube.com/embed/Kohv3Lz7Oqg?si=PtG0BaagSpoC2Wbx" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2026 Sunflower Team. Sweet as Honey.</p>
+    <p>© 2026 Niken Triwulandari - Kelompok 3. 🌻🍯🐝</p>
 </footer>
+
+</body>
+</html>
