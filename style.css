@@ -1,118 +1,281 @@
+/* --- GOOGLE FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- VARIABLES & BASE --- */
 :root {
     --pastel-yellow: #fdf0ad;
     --soft-cream: #fffdf5;
     --dark-brown: #5d4037;
     --accent-orange: #d4a017;
+    --transition: all 0.3s ease;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+}
 
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--soft-cream);
     color: var(--dark-brown);
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* HEADER */
+/* --- HEADER & NAVIGATION --- */
 header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     padding: 15px 10%;
-    position: fixed; width: 100%; top: 0; z-index: 1000;
-    backdrop-filter: blur(8px);
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 160, 23, 0.1);
 }
 
-nav { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-orange); }
-.nav-links { list-style: none; display: flex; }
-.nav-links li { margin-left: 20px; }
-.nav-links li a { text-decoration: none; color: var(--dark-brown); font-size: 0.9rem; }
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
 
-/* HOME SECTION */
+.logo { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: var(--accent-orange); 
+    letter-spacing: 1px;
+}
+
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+}
+
+.nav-links li { margin-left: 25px; }
+
+.nav-links li a { 
+    text-decoration: none; 
+    color: var(--dark-brown); 
+    font-size: 0.9rem; 
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links li a:hover {
+    color: var(--accent-orange);
+}
+
+/* --- HERO SECTION --- */
 .hero-kelompok {
     height: 100vh;
     background: linear-gradient(135deg, #fff9e3, var(--pastel-yellow));
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; position: relative; overflow: hidden;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+    position: relative; 
+    overflow: hidden;
 }
 
-.hero-overlay { z-index: 20; position: relative; }
-.hero-overlay h1 { font-size: 5rem; font-weight: 700; color: var(--dark-brown); }
-.sub-title { color: var(--accent-orange); font-weight: 600; letter-spacing: 2px; }
+.hero-overlay { 
+    z-index: 20; 
+    position: relative; 
+}
+
+.hero-overlay h1 { 
+    font-size: clamp(3rem, 8vw, 5rem); 
+    font-weight: 800; 
+    color: var(--dark-brown);
+    margin: 10px 0;
+}
+
+.sub-title { 
+    color: var(--accent-orange); 
+    font-weight: 600; 
+    letter-spacing: 3px; 
+    text-transform: uppercase;
+}
 
 .btn-cek {
-    display: inline-block; padding: 12px 40px; background: white;
-    color: var(--accent-orange); text-decoration: none; border-radius: 50px;
-    font-weight: 600; margin-top: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: inline-block; 
+    padding: 14px 40px; 
+    background: white;
+    color: var(--accent-orange); 
+    text-decoration: none; 
+    border-radius: 50px;
+    font-weight: 600; 
+    margin-top: 25px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: var(--transition);
 }
 
-/* BUNGA MATAHARI BESAR (STUCK) */
+.btn-cek:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 160, 23, 0.2);
+    background: var(--accent-orange);
+    color: white;
+}
+
+/* --- DECORATIONS (SUNFLOWER & HONEY) --- */
 .sunflower-big {
     position: absolute;
-    font-size: 12rem; /* Ukuran Super Besar */
+    font-size: 15rem;
     z-index: 5;
-    opacity: 0.9;
+    opacity: 0.3; /* Sedikit diturunkan agar teks tetap terbaca */
     pointer-events: none;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.05));
 }
+
 .sf-1 { top: -5%; left: -5%; transform: rotate(-15deg); }
 .sf-2 { bottom: -5%; right: -5%; transform: rotate(15deg); }
 
-/* HIASAN MADU & BINTANG */
 .hiasan {
     position: absolute;
     z-index: 10;
     pointer-events: none;
     animation: float 4s ease-in-out infinite;
 }
+
 .honey-1 { top: 20%; right: 10%; font-size: 4rem; }
 .honey-2 { bottom: 20%; left: 10%; font-size: 4rem; animation-delay: 1s; }
-.star-1 { top: 50%; right: 5%; font-size: 2.5rem; }
+.star-1 { top: 50%; right: 5%; font-size: 2.5rem; opacity: 0.6; }
 
-/* SECTION UMUM */
-.section-container { padding: 80px 10%; position: relative; }
-.section-title { text-align: center; font-size: 2.2rem; color: var(--dark-brown); margin-bottom: 50px; }
+/* --- SECTIONS --- */
+.section-container { 
+    padding: 100px 10%; 
+    position: relative; 
+}
+
+.section-title { 
+    text-align: center; 
+    font-size: 2.5rem; 
+    color: var(--dark-brown); 
+    margin-bottom: 60px;
+    position: relative;
+}
+
+/* Garis bawah dekoratif pada judul */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-orange);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
 .bg-white { background: #fff; }
 .bg-pastel { background: var(--soft-cream); }
 
-/* GRID ANGGOTA */
-.kelompok-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-.kelompok-card { background: white; border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #f1f1f1; transition: 0.3s; }
-.kelompok-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.card-img img { width: 100%; height: 320px; object-fit: cover; }
-.card-info { padding: 20px; text-align: center; }
+/* --- CARDS GRID --- */
+.kelompok-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+}
 
-/* VIDEO & LEBAH */
+.kelompok-card { 
+    background: white; 
+    border-radius: 25px; 
+    overflow: hidden; 
+    border: 1px solid rgba(0,0,0,0.03); 
+    transition: var(--transition);
+}
+
+.kelompok-card:hover { 
+    transform: translateY(-12px); 
+    box-shadow: 0 15px 35px rgba(93, 64, 55, 0.1); 
+}
+
+.card-img {
+    overflow: hidden;
+}
+
+.card-img img { 
+    width: 100%; 
+    height: 350px; 
+    object-fit: cover; 
+    transition: var(--transition);
+}
+
+.kelompok-card:hover .card-img img {
+    transform: scale(1.05);
+}
+
+.card-info { padding: 25px; text-align: center; }
+.card-info h3 { font-size: 1.25rem; margin-bottom: 5px; }
+.card-info p { color: var(--accent-orange); font-weight: 500; font-size: 0.9rem; }
+
+/* --- VIDEO & ANIMATED BEES --- */
 #video { position: relative; overflow: hidden; }
+
 .video-wrapper { 
-    max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; 
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); position: relative; z-index: 5;
+    max-width: 900px; 
+    margin: 0 auto; 
+    border-radius: 30px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12); 
+    position: relative; 
+    z-index: 5;
 }
-.video-wrapper iframe { width: 100%; aspect-ratio: 16/9; border: none; }
 
-.lebah { position: absolute; font-size: 3rem; z-index: 100; pointer-events: none; }
-.lebah-1 { top: 10%; left: 5%; animation: fly 10s infinite linear; }
-.lebah-2 { bottom: 20%; right: 5%; animation: flyReverse 12s infinite linear; }
+.video-wrapper iframe { 
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    border: none; 
+    display: block;
+}
 
-/* ANIMASI */
+.lebah { 
+    position: absolute; 
+    font-size: 3rem; 
+    z-index: 100; 
+    pointer-events: none; 
+}
+
+.lebah-1 { top: 10%; left: 5%; animation: fly 12s infinite linear; }
+.lebah-2 { bottom: 20%; right: 5%; animation: flyReverse 15s infinite linear; }
+
+/* --- ANIMATIONS --- */
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-20px) rotate(5deg); }
 }
+
 @keyframes fly {
-    0% { transform: translate(0,0); }
-    50% { transform: translate(400px, 50px); }
-    100% { transform: translate(0,0); }
+    0% { transform: translate(-100px, 0) scaleX(1); }
+    45% { transform: translate(110vw, 50px) scaleX(1); }
+    50% { transform: translate(110vw, 50px) scaleX(-1); }
+    95% { transform: translate(-100px, -50px) scaleX(-1); }
+    100% { transform: translate(-100px, 0) scaleX(1); }
 }
+
 @keyframes flyReverse {
-    0% { transform: translate(0,0); }
-    50% { transform: translate(-400px, -50px); }
-    100% { transform: translate(0,0); }
+    0% { transform: translate(100px, 0) scaleX(-1); }
+    45% { transform: translate(-110vw, -80px) scaleX(-1); }
+    50% { transform: translate(-110vw, -80px) scaleX(1); }
+    95% { transform: translate(100px, 40px) scaleX(1); }
+    100% { transform: translate(100px, 0) scaleX(-1); }
 }
 
-footer { padding: 40px; text-align: center; background: var(--pastel-yellow); }
+/* --- FOOTER --- */
+footer { 
+    padding: 60px 20px; 
+    text-align: center; 
+    background: var(--pastel-yellow);
+    border-top: 2px solid rgba(212, 160, 23, 0.1);
+}
 
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    .hero-overlay h1 { font-size: 3rem; }
-    .sunflower-big { font-size: 8rem; }
-    .nav-links { display: none; }
+    header { padding: 15px 5%; }
+    .hero-overlay h1 { font-size: 3.2rem; }
+    .sunflower-big { font-size: 8rem; opacity: 0.2; }
+    .nav-links { display: none; } /* Bisa diganti hamburger menu nantinya */
+    .section-container { padding: 80px 5%; }
 }
