@@ -1,4 +1,4 @@
-/* --- Reset & Font --- */
+/* --- 1. SETTING DASAR --- */
 * {
     margin: 0;
     padding: 0;
@@ -6,127 +6,159 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    overflow-x: hidden;
-    color: #333;
+html {
+    scroll-behavior: smooth;
 }
 
-/* --- Layout Dasar agar Hiasan Muncul --- */
+/* --- 2. HOME SECTION (Bunga & Madu Stuck) --- */
 .hero-kelompok {
     height: 100vh;
+    background-color: #FFF9E6; /* Kuning Pastel */
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background: #fff9e6; /* Warna kuning pastel lembut */
-}
-
-.hero-overlay {
     position: relative;
-    z-index: 5;
+    overflow: hidden; /* Biar hiasan ga lari ke section lain */
 }
 
-.section-container {
-    padding: 80px 20px;
-    position: relative;
-}
-
-.bg-pastel { background-color: #fffdf2; }
-.container { max-width: 1200px; margin: 0 auto; }
-
-/* --- Tombol & Gaya Tambahan --- */
-.btn-cek {
-    display: inline-block;
-    padding: 10px 25px;
-    background: #f39c12;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    margin-top: 20px;
-}
-
-/* --- Masukkan Kode Hiasan Kamu Di Sini --- */
-
-/* Konfigurasi Dasar Hiasan */
-.hero-kelompok, .video-section {
-    position: relative;
-    overflow: hidden; 
-}
-
-/* Hiasan Bunga Matahari (Home) */
+/* Bunga Matahari di Pojok Atas & Bawah (Stuck) */
 .hero-kelompok::before {
     content: '🌻';
     position: absolute;
-    top: 5%;
-    left: -2%;
+    top: -20px;
+    left: -20px;
     font-size: 150px;
     opacity: 0.2;
     transform: rotate(-15deg);
-    z-index: 1;
 }
 
 .hero-kelompok::after {
     content: '🌻';
     position: absolute;
-    bottom: -5%;
-    right: -2%;
+    bottom: -20px;
+    right: -20px;
     font-size: 150px;
     opacity: 0.2;
     transform: rotate(15deg);
-    z-index: 1;
 }
 
-/* Hiasan Madu & Bintang (Home) */
+/* Elemen Madu di Dekat Teks (Stuck & Floating) */
 .hero-overlay::before {
     content: '🍯';
     position: absolute;
-    top: -50px; /* Diatur agar di atas teks */
-    right: -30px;
-    font-size: 50px;
-    animation: float 4s ease-in-out infinite;
+    top: -70px;
+    right: 20px;
+    font-size: 60px;
+    animation: honeyFloat 3s infinite ease-in-out;
 }
 
 .hero-overlay::after {
-    content: '✨';
+    content: '🍯';
     position: absolute;
-    bottom: -40px;
-    left: -20px;
+    bottom: -70px;
+    left: 20px;
     font-size: 40px;
-    animation: float 3s ease-in-out infinite;
-    animation-delay: 1s;
+    animation: honeyFloat 4s infinite ease-in-out reverse;
 }
 
-/* Hiasan Lebah (Video Section) */
+/* --- 3. VIDEO SECTION (3 Lebah Mondar-Mandir) --- */
+.video-section {
+    position: relative;
+    padding: 100px 20px;
+    background-color: #ffffff;
+    overflow: hidden; /* Mengunci lebah agar hanya di area video */
+}
+
+/* Kita buat lebah menggunakan pseudo-elements dan satu class tambahan */
+/* Lebah 1 */
 .video-section::before {
     content: '🐝';
     position: absolute;
-    top: 15%;
-    left: 5%;
-    font-size: 60px;
-    animation: fly 12s infinite linear;
+    top: 20%;
+    font-size: 40px;
+    animation: beeFly1 8s infinite linear;
     z-index: 10;
 }
 
+/* Lebah 2 */
 .video-section::after {
     content: '🐝';
     position: absolute;
-    bottom: 15%;
-    right: 5%;
-    font-size: 60px;
-    animation: fly 15s infinite linear reverse;
+    top: 50%;
+    font-size: 35px;
+    animation: beeFly2 12s infinite linear;
     z-index: 10;
 }
 
-/* --- Keyframes Animasi --- */
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(10deg); }
+/* Lebah 3 (Tambahan menggunakan selektor container di dalam video) */
+.video-section .container::before {
+    content: '🐝';
+    position: absolute;
+    bottom: 10%;
+    font-size: 45px;
+    animation: beeFly1 10s infinite linear reverse;
+    z-index: 10;
 }
 
-@keyframes fly {
-    0% { transform: translate(0, 0) scaleX(1); }
-    25% { transform: translate(100px, -50px) scaleX(1); }
-    50% { transform: translate(200px, 20px) scaleX(-1); } 
-    75% { transform: translate(100px, 50px) scaleX(-1); }
-    100% { transform: translate(0, 0) scaleX(1); }
+/* --- 4. ANIMASI --- */
+
+/* Animasi Madu Melayang Pelan */
+@keyframes honeyFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Animasi Lebah Mondar-Mandir 1 */
+@keyframes beeFly1 {
+    0% { left: -10%; transform: scaleX(1); }
+    49% { transform: scaleX(1); }
+    50% { left: 110%; transform: scaleX(-1); }
+    99% { transform: scaleX(-1); }
+    100% { left: -10%; transform: scaleX(1); }
+}
+
+/* Animasi Lebah Mondar-Mandir 2 (Jalur Berbeda) */
+@keyframes beeFly2 {
+    0% { right: -10%; transform: scaleX(-1); }
+    49% { transform: scaleX(-1); }
+    50% { right: 110%; transform: scaleX(1); }
+    99% { transform: scaleX(1); }
+    100% { right: -10%; transform: scaleX(-1); }
+}
+
+/* --- 5. STYLE TAMBAHAN (Biar Rapi) --- */
+.hero-overlay {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+.sub-title { color: #D4A017; font-weight: 600; }
+h1 { font-size: 4rem; color: #444; }
+
+.kelompok-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.kelompok-card {
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.kelompok-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.card-img img { width: 100%; height: 250px; object-fit: cover; }
+.card-info { padding: 15px; text-align: center; }
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    border: none;
 }
