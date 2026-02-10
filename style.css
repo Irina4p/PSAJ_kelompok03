@@ -1,10 +1,59 @@
-/* --- Konfigurasi Dasar Hiasan --- */
-.hero-kelompok, .video-section {
-    position: relative;
-    overflow: hidden; /* Agar hiasan tidak 'kabur' ke section lain */
+/* --- Reset & Font --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* --- Hiasan Bunga Matahari (Home) --- */
+body {
+    overflow-x: hidden;
+    color: #333;
+}
+
+/* --- Layout Dasar agar Hiasan Muncul --- */
+.hero-kelompok {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #fff9e6; /* Warna kuning pastel lembut */
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 5;
+}
+
+.section-container {
+    padding: 80px 20px;
+    position: relative;
+}
+
+.bg-pastel { background-color: #fffdf2; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* --- Tombol & Gaya Tambahan --- */
+.btn-cek {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #f39c12;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+/* --- Masukkan Kode Hiasan Kamu Di Sini --- */
+
+/* Konfigurasi Dasar Hiasan */
+.hero-kelompok, .video-section {
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Hiasan Bunga Matahari (Home) */
 .hero-kelompok::before {
     content: '🌻';
     position: absolute;
@@ -27,12 +76,12 @@
     z-index: 1;
 }
 
-/* --- Hiasan Madu & Bintang (Home) --- */
+/* Hiasan Madu & Bintang (Home) */
 .hero-overlay::before {
     content: '🍯';
     position: absolute;
-    top: 20%;
-    right: 15%;
+    top: -50px; /* Diatur agar di atas teks */
+    right: -30px;
     font-size: 50px;
     animation: float 4s ease-in-out infinite;
 }
@@ -40,14 +89,14 @@
 .hero-overlay::after {
     content: '✨';
     position: absolute;
-    bottom: 25%;
-    left: 10%;
+    bottom: -40px;
+    left: -20px;
     font-size: 40px;
     animation: float 3s ease-in-out infinite;
     animation-delay: 1s;
 }
 
-/* --- Hiasan Lebah (Video Section) --- */
+/* Hiasan Lebah (Video Section) */
 .video-section::before {
     content: '🐝';
     position: absolute;
@@ -69,18 +118,15 @@
 }
 
 /* --- Keyframes Animasi --- */
-
-/* Animasi Mengapung Halus */
 @keyframes float {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(10deg); }
 }
 
-/* Animasi Lebah Terbang Keliling Area */
 @keyframes fly {
     0% { transform: translate(0, 0) scaleX(1); }
     25% { transform: translate(100px, -50px) scaleX(1); }
-    50% { transform: translate(200px, 20px) scaleX(-1); } /* Balik arah lebah */
+    50% { transform: translate(200px, 20px) scaleX(-1); } 
     75% { transform: translate(100px, 50px) scaleX(-1); }
     100% { transform: translate(0, 0) scaleX(1); }
 }
